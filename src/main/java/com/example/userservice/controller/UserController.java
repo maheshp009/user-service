@@ -83,6 +83,25 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") String id) {
+        try {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @DeleteMapping("/user")
+    public ResponseEntity<HttpStatus> deleteAllUser() {
+        try {
+            userRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 //    @GetMapping("/user")
 //    public ResponseEntity<List<User>> getAllUser(@RequestParam(required = false) String dateOfBirth) {

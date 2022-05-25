@@ -55,7 +55,16 @@ public class UserController {
         }
     }
 
-   
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") String id) {
+        Optional<User> userData = userRepository.findById(id);
+        if (userData.isPresent()) {
+            return new ResponseEntity<User>(userData.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 //    @GetMapping("/user")
 //    public ResponseEntity<List<User>> getAllUser(@RequestParam(required = false) String dateOfBirth) {

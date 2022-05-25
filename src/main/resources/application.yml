@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-service
+
+  data:
+    mongodb:
+      host: localhost
+      database: user_db
+      port: 27017
+  cloud:
+    discovery:
+      enabled: true
+server:
+  port: 3005
